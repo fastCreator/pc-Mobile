@@ -4,7 +4,7 @@
     <router-view/>
     <mt-tabbar fixed v-model="selected">
       <mt-tab-item v-for="(it ,i) in navs" :key="i" :id="it.name">
-        <img slot="icon" :src="`./nav/${it.name}.png`"> {{it.meta.title}}
+        <img slot="icon" :src="`./nav/${it.name+(selected===it.name?'_fill':'')}.png`"> {{it.meta.title}}
       </mt-tab-item>
     </mt-tabbar>
   </div>
@@ -31,7 +31,13 @@ export default {
 }
 </script>
 <style lang="less">
+/*
+ 未选中颜色：#333
+ 选中颜色:#26a2ff
+ 大小48px图片
+*/
 .home {
+  color: #333;
   padding: 40px 0 55px;
   .mint-tabbar{
   }

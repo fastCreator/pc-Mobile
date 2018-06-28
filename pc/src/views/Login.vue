@@ -35,10 +35,12 @@ export default {
   created () {},
   methods: {
     submitForm (formName) {
-      console.log(this.$server)
       this.$refs[formName].validate(valid => {
         if (valid) {
-          this.$server.login('xwjc2018', 'aa', function (data) {})
+          this.$server.login('xwjc2018', 'aa', (data) => {
+            this.$store.commit('setUser', 10)
+            this.$router.push('/a/b')
+          })
         }
       })
     },

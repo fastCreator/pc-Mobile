@@ -18,7 +18,18 @@ Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.use(Components)
 Vue.use(Components)
-let vm = new Vue({
+let vm
+
+router.beforeEach((to, from, next) => {
+  setTimeout(() => {
+    if (to.name !== 'login' && !vm.$store.state.user) {
+      next('/')
+    } else {
+      next()
+    }
+  }, 0)
+})
+vm = new Vue({
   router,
   store,
   render: h => h(App)

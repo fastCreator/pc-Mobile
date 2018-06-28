@@ -25,7 +25,7 @@ nav.forEach(it => {
   }
 })
 
-export default new Router({
+let router = new Router({
   routes: [
     {
       path: '/',
@@ -40,3 +40,4 @@ export default new Router({
     }
   ]
 })
+export default router
