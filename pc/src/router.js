@@ -40,4 +40,13 @@ let router = new Router({
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  if (to.name !== 'login' && !window.$utils.getUser()) {
+    next('/')
+  } else {
+    next()
+  }
+})
+
 export default router

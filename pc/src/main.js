@@ -6,6 +6,7 @@ import Components from './components/install.js'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import server from './server'
+import './utils'
 
 Vue.mixin({
   computed: {
@@ -18,18 +19,8 @@ Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.use(Components)
 Vue.use(Components)
-let vm
 
-router.beforeEach((to, from, next) => {
-  setTimeout(() => {
-    if (to.name !== 'login' && !vm.$store.state.user) {
-      next('/')
-    } else {
-      next()
-    }
-  }, 0)
-})
-vm = new Vue({
+let vm = new Vue({
   router,
   store,
   render: h => h(App)
