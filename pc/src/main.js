@@ -7,6 +7,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import server from './server'
 import './utils'
+import './common/common.less'
 
 Vue.mixin({
   computed: {
