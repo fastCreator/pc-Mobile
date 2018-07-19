@@ -37,8 +37,7 @@ export default {
     submitForm (formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          this.$server.login('xwjc2018', 'aa', (data) => {
-            window.$utils.setUser(data)
+          window.server.login('xwjc2018', 'aa', (data) => {
             this.$router.push('/a/b')
           })
         }

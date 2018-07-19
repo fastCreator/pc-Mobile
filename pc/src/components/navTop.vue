@@ -1,6 +1,7 @@
 <template>
   <div class="navTop">
         1231231
+        <el-button @click="logout">退出登录</el-button>
   </div>
 </template>
 
@@ -17,12 +18,17 @@ export default {
   created () {
   },
   methods: {
+    logout () {
+      window.server.logout(() => {
+        this.$router.push('/')
+      })
+    }
   }
 }
 </script>
 <style lang="less">
-.navTop{
-  ul{
+.navTop {
+  ul {
     list-style-type: none;
   }
 }

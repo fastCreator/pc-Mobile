@@ -53,8 +53,18 @@ let router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.name !== 'login' && !window.$utils.getUser()) {
-    next('/')
+  if (to.name !== 'login') {
+    if (window.isLogin) {
+      next()
+    } else if (window.localStorage.account) {
+      setTimeout(() => {
+        window.server.login(window.localStorage.account, window.localStorage.code, () => {
+          next()
+        })
+      }, 1000)
+    } else {
+      next('/')
+    }
   } else {
     next()
   }

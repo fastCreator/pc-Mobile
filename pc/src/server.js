@@ -67,14 +67,22 @@ var init = function (startCall) {
   apiconn.connect()
 }
 
-var server = {
-
+window.server = {
+  logout (cb) {
+    window.localStorage.account = ''
+    window.localStorage.code = ''
+    window.isLogin = false
+    cb()
+  },
   // 登录
   login: function (account, code, call) {
     // var type = 1
     apiCallback['person_login'] = function (data) {
       // 这是入口
       window.console.info('login回调!!', data)
+      window.localStorage.account = account
+      window.localStorage.code = code
+      window.isLogin = true
       if (call) {
         call(data)
       }
